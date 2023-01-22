@@ -1,0 +1,7 @@
+### Java_baisc Project 
+
+# IntelliJ project files
+.idea
+*.imi
+out
+
