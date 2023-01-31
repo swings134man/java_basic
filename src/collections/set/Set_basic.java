@@ -22,8 +22,8 @@ public class Set_basic {
 
     public static void main(String[] args) {
 //        hash_set();
-//        linked_set();
-        tree_set();
+        linked_set();
+//        tree_set();
     }//main
 
     // HashSet
@@ -63,7 +63,7 @@ public class Set_basic {
         System.out.println(set); // 전체 목록 출력.
     }// Hash_set
 
-    // LinkedSet
+    // LinkedHashSet
     public static void linked_set() {
         /*
             - LinkedSet
@@ -92,7 +92,7 @@ public class Set_basic {
         System.out.println("-------------------------------------");
 
         System.out.println(lSet);
-    }// LinkedSet
+    }// LinkedHashSet
 
     // TreeSet
     public static void tree_set() {
