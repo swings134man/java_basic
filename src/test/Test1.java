@@ -7,5 +7,7 @@ public class Test1 {
 
     public static void main(String[] args) {
         System.out.println("This is Test Class");
+
+        System.out.println("test Mixed");
     }
 }
