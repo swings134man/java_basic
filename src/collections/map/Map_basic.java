@@ -1,9 +1,6 @@
 package collections.map;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /************
  * @info : Java - Map 기본
@@ -22,8 +19,9 @@ import java.util.Set;
  ************/
 public class Map_basic {
     public static void main(String[] args) {
-        hash_map();
-
+//        hash_map();
+//        tree_map();
+        hash_table();
     }// main
 
 
@@ -65,8 +63,56 @@ public class Map_basic {
 
         map.clear(); // map 의 내용 전부 삭제
         System.out.println("map 내부 요소 : " + map.size());
-
     }// HashMap
+
+    //Tree Map
+    public static void tree_map() {
+        /*
+            - Tree Map
+            1. 오름차순 정렬 됨.
+            2. Hash Map 보다 성능이 좋지않음.
+         */
+        TreeMap<Integer, String> tree = new TreeMap<>();
+        tree.put(1, "a");
+        tree.put(2, "b");
+        tree.put(3, "c");
+        tree.put(4, "d");
+        tree.put(5, "e");
+
+        System.out.println(tree); // 전체 출력
+        System.out.println(tree.get(3)); // 단일 출력.
+        System.out.println(tree.firstEntry()); // 최초 Entry 출력 : 1=a
+        System.out.println(tree.firstKey()); //최초 Key 값 출력 = 1
+        System.out.println(tree.lastEntry()); // 마지막 Entry 출력 : 5=e
+        System.out.println(tree.lastKey()); // 마지막 ket 값 출력 = 5
+        System.out.println("-------------------------------------------");
+
+        // 전체 요소를 다루는 방법 = 2가지 존재 (Iterator, Entry)
+        //Entry
+        for(Map.Entry<Integer, String> map : tree.entrySet()) {
+            System.out.println("key="+map.getKey() + " value=" + map.getValue());
+        }
+        tree.remove(5); // 요소 삭제
+        System.out.println(tree.lastEntry());
+    }// tree map
+
+    // Hash Table
+    public static void hash_table() {
+        /*
+            - HashTable
+            1. value : null 입력 불가. (HashMap 은 가능)
+            2. 동기화가 이루어짐
+         */
+        Hashtable<Integer, String> table = new Hashtable<>();
+        table.put(1, "a");
+        table.put(2, "b");
+        table.put(3, "c");
+        table.put(4, "d");
+        table.put(5, "e");
+        System.out.println(table);
+
+        // 출력 방법은 HashMap, TreeMap과 동일 -> Iterator, get(Object o), Entry
+    } // HashTable
 
 
 }
