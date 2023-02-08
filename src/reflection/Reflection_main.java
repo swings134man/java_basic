@@ -17,6 +17,9 @@ import java.lang.reflect.Constructor;
 public class Reflection_main {
 
     public static void main(String[] args) throws Exception{
+        // 호출해야할 대상 객체
+        TestReflection test = new TestReflection();
+
         // Class target = Class.forName("TestReflection"); // 클래스 이름으로 info get
         Class target = TestReflection.class; // java.lang.Class : not to import
 
@@ -68,9 +71,80 @@ public class Reflection_main {
 //        for(Method pub : allPublicMehtods) {
 //            System.out.println("All public Methods: " + pub);
 //        }
+        System.out.println();
 
+        // ---------------------------------------------- Field --------------------------------------------------------------
+        /*
+            Field
+            1. 특정 필드 검색.
+            2. 모든 필드 검색. (상속받은 객체 X) -> private, public
+            3. 상속받은 클래스 포함 모든 public Field
+            4. Field 변수 변경
+            5. private Field 접근 및 변수 변경.
+         */
 
+        // 1 - 특정필드 검색
+        Field str = target.getDeclaredField("str1");
 
+        // 2 - 모든 필드(private, public)
+        Field[] allField = target.getDeclaredFields();
+        for (Field all:allField) {
+            System.out.println("Field : " + all);
+        }
+
+        // 3 - 상속 포함 모든 필드
+//        target.getFields();
+
+        // 4 - Field 변경. (str2="2")
+        Field str2 = target.getField("str2");
+        System.out.println("Field str2: " + str2.get(test)); // get(대상 객체를 넘겨야함.) = 2
+        str2.set(test, "changed str2");
+        System.out.println("Field str2: " + str2.get(test)); // = changed str2
+
+        // 5 - private Field 변경 (str1="1")
+        Field str1 = target.getDeclaredField("str1");
+        str1.setAccessible(true); // Private 접근 활성화 (true)
+        System.out.println("field private : " + str1.get(test));
+        str1.set(test, "str1 changed");
+        System.out.println("field private set : " + str1.get(test));
+
+        System.out.println();
+        // ---------------------------------------------- Method --------------------------------------------------------------
+        /*
+            Method 호출. - Class의 Method 정보를 가져와, 호출 가능.
+            1. 메소드 객체 찾아서 invoke() 호출.
+            2. private Method 접근.
+         */
+
+        // 1 - (호출하려는 객체, 전달할 파라미터값)
+        Method method4 = target.getDeclaredMethod("method4", int.class);
+        int invoke = (int)method4.invoke(test, 3); // return 4
+        System.out.println("method return : "+ invoke);
+
+        // 2 - private Method 접근
+        Method method1 = target.getDeclaredMethod("method1");
+        method1.setAccessible(true); // Private 접근 true(접근가능)
+        method1.invoke(test);
+
+        System.out.println();
+        // ---------------------------------------------- Static 접근 --------------------------------------------------------------
+        /*
+            Static Field 변경,호출 -  Method 호출 -> 객체를 전달하는 param 을 null 로 넣어야함.
+            1. static Method 호출
+            2. static field - get, set (대상 클래스 파라미터에 객체 대신, null 을 넣어야함.)
+         */
+
+        // 1
+        Method testStatic = target.getDeclaredMethod("testStatic", int.class);
+        int invoke1 = (int)testStatic.invoke(null, 10);
+        System.out.println("static method : " + invoke1);
+
+        // 2
+        Field example = target.getDeclaredField("EXAMPLE");
+        System.out.println("static field : " + example.get(null));
+
+        example.set(null, "Hello World");
+        System.out.println("static field changed: " + example.get(null));
 
     }// main
 }

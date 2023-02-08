@@ -11,6 +11,7 @@ package reflection;
 public class TestReflection {
 
     // 전역변수
+    public static String EXAMPLE = "test Code"; // static
     private String str1 = "1";
     public String str2 = "2";
 
@@ -22,6 +23,13 @@ public class TestReflection {
 
     }
 
+    // static
+    public static int testStatic(int num) {
+        System.out.println("Get static method, return - num * num");
+        return num * num;
+    }
+
+
     private void method1() {
         System.out.println("method 1 called");
     }
@@ -32,5 +40,9 @@ public class TestReflection {
 
     public void method3() {
         System.out.println("method 3 called");
+    }
+
+    public int method4(int n) {
+        return n + 1;
     }
 }
