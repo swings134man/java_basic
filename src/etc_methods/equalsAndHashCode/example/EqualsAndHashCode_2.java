@@ -1,4 +1,4 @@
-package etc.equalsAndHashCode.example;
+package etc_methods.equalsAndHashCode.example;
 
 /************
  * @info : Equals And HashCode Main 2

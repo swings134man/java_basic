@@ -1,4 +1,4 @@
-package etc.equalsAndHashCode;
+package etc_methods.equalsAndHashCode;
 
 /************
  * @info : Equals And HashCode 비교를 위한 class - NOT OVERRIDE equalse

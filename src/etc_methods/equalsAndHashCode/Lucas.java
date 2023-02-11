@@ -1,4 +1,4 @@
-package etc.equalsAndHashCode;
+package etc_methods.equalsAndHashCode;
 
 
 import java.util.Objects;
