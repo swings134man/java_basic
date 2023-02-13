@@ -42,6 +42,10 @@ public class Generic_method {
         System.out.println("E Type: " + t2.get().getClass().getName());
         System.out.println("제네릭 메서드 Value: " + t2.genericMethod(200));// 제네릭 메소드 타입.
         System.out.println("제네릭 메서드 Type: " + t2.genericMethod(200).getClass().getName());// 제네릭 메소드 타입.
+
+        // static Generic Methods
+        System.out.println("<T> Value t1: " + Generic_method_test1.staticGeneric1("this is Static Mehtod1")); // static Method1: value
+        System.out.println("<T> Type t2: " + Generic_method_test1.staticGeneric2(10.0).getClass().getName()); // static Method2: Type
     }
 }// main class
 
