@@ -27,6 +27,7 @@ package etc_methods.generics;
  *  - 주의사항
  *      1. T(타입 파라미터) 를 명시 할 수 있는것은 -> Reference Type만 가능하다. -> primitive Type은 안된다.
  *          --> primitive type 을 써야하는 경우 -> Wrapper Class 사용으로 가능하다. (Integer, Double ,,,)
+ *          --> <T> 타입은 {} : 해당 블럭안에서만 유효하다.
  *      2. 참조 타입이 가능 한다는것은 -> 사용자 정의 Class 또한 Type으로 지정이 가능하다는 의미이다.
  *
  *  - class 뿐 아니라 interface 마찬가지로 적용 가능하다.
