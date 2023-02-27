@@ -59,7 +59,7 @@ public class WildCard_main {
                 getCompanyName.invoke(ob);
             }
 
-            
+
         }
     }// method
 }
