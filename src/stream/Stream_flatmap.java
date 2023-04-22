@@ -46,6 +46,82 @@ public class Stream_flatmap {
                 .flatMap(Arrays::stream)
                 .collect(Collectors.toList());
         System.out.println("usingFlat = " + usingFlat); // [a,b,c,d,e,f]
+        System.out.println();
+
+        testDTO();
     }
 
+    // Sample 2
+    public static void testDTO() {
+        /*
+        ASP.net Data 구조 -> 기본적으로 2차원 배열을 사용해서 데이터를 Get,Set 한다.
+            Dim arr(3,2)
+                arr(0,0) = "Apple"
+                arr(0,1) = "Banana"
+                arr(0,2) = "Cherry"
+        -> 해당 구조를 Java 에서 데이터를 받는다면 어떻게 Parsing 할것 인가 ?
+         */
+
+
+        String[][] testData = new String[2][2];
+        testData[0][0] = "Apple";
+        testData[0][1] = "Banana";
+        testData[1][0] = "Cherry";
+        testData[1][1] = "Grape";
+
+        // Result [Apple, Banana], [Cherry, Grape]
+        for (String[] data: testData) {
+            System.out.println(Arrays.toString(data));
+        }
+
+        // 위의 코드를 한줄로 -> 평면화를 시켜보자.
+        // -> Result : [Apple, Banana, Cherry, Grape]
+        List<String> collect = Arrays.stream(testData)
+                .flatMap(data -> Arrays.stream(data))
+                .collect(Collectors.toList());
+
+        System.out.println(collect);
+
+        // data
+//        String[][] peple = new String[][]{
+//                {"test1", "10"}, {"test2", "20"},
+//                {"test3", "30"}, {"test4", "40"}
+//        };
+//
+//        // Struct
+//        Set<String> collect = Arrays.stream(peple)
+//                .flatMap(data -> Arrays.stream(data))
+//                .collect(Collectors.toSet());
+//
+//        // result
+////        collect.forEach(System.out::println);
+//        System.out.println(collect);
+    }
+}// class
+
+class StreamDTO {
+
+    public StreamDTO(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
