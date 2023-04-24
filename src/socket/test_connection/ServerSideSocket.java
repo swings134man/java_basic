@@ -29,11 +29,31 @@ public class ServerSideSocket {
 
         // 대기열에 기다리고 있는 클라이언트가 없다면, 리턴하지 않는다.
         Socket socket = serverSocket.accept();
-
-        System.out.println("=> 클라이언트 연결 승인!");
-
         InputStream in0 = socket.getInputStream();
         OutputStream out0 = socket.getOutputStream();
+
+        // 처음 2번의 값으로 id, pw 판별.
+        Scanner authFromCli = new Scanner(in0);
+        String id = authFromCli.nextLine();
+        System.out.println(id);
+        String pw = authFromCli.nextLine();
+        System.out.println(pw);
+
+        PrintStream out1 = new PrintStream(out0);
+        if(!id.equals("admin") && !pw.equals("1234")) {
+            out1.println("Bye!");
+            authFromCli.close();
+            in0.close();
+            out1.close();
+            out0.close();
+            socket.close();
+            serverSocket.close();
+        }
+        out1.println("인증성공");
+        out1.close();
+        authFromCli.close();
+        System.out.println("=> 클라이언트 연결 승인!");
+
 
         // TO Client
         while (true){

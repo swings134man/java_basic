@@ -30,11 +30,36 @@ public class ClientSocket {
 
         // 3) 사용자로부터 입력 받은 값을 가지고 서버에 접속한다.
         Socket socket = new Socket(serverAddress, port);
-        System.out.println("=> 소켓 객체 생성 완료!");
 
         // 4) 입출력할 스트림 객체 준비
         InputStream in0 = socket.getInputStream();
         OutputStream out0 = socket.getOutputStream();
+
+        // ID - Password 입력.
+        Scanner forAuthIn = new Scanner(in0);
+        PrintStream forAuth = new PrintStream(out0);
+
+        System.out.print("id 입력 >> ");
+        forAuth.println(keyScanner.nextLine());
+        System.out.print("pw 입력 >> ");
+        forAuth.println(keyScanner.nextLine());
+
+        if(forAuthIn.nextLine().equals("Bye!")){
+            forAuthIn.close();
+            forAuth.close();
+            in0.close();
+            out0.close();
+            socket.close();
+            keyScanner.close();
+            System.out.println("인증 실패!");
+            return;
+        }
+
+        forAuth.println("클라이언트와 연결 됨.");
+        forAuth.close();
+        forAuthIn.close();
+        System.out.println("=> 소켓 객체 생성 완료!");
+
 
         // 5) 스트림 객체에 입출력 보조 객체를 연결한다.
         Scanner in = new Scanner(in0);
