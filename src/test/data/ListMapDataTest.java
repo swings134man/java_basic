@@ -11,7 +11,7 @@ import java.util.Map;
  * @date : 2023/05/03 8:59 PM
  * @author : SeokJun Kang(swings134@gmail.com)
  * @version : 1.0.0
- * @Description :
+ * @Description : resultMap 으로 반환시에, 조건에 따라 map에 데이터 추가
  ************/
 public class ListMapDataTest {
 
