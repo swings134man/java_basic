@@ -72,6 +72,7 @@ public class Masking {
         계좌번호 마스킹
             - 은행별 계좌번호 자릿수 및 패턴 상이함.
             -> 11 ~ 13 자리 사이.
+            -> 2023.05.10: 은행 종류 따지지않고, 앞 4자리, 뒤4자리 마스킹 예정
      */
     public String bankAccount(String account) {
         String maskedAccount = "";
