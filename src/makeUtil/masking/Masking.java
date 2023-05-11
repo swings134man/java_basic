@@ -1,5 +1,7 @@
 package makeUtil.masking;
 
+import config.annotation.Timer;
+
 import java.util.Map;
 
 /************
@@ -26,6 +28,7 @@ public class Masking {
     /*
         한글 이름 마스킹 처리
      */
+    @Timer(value = "Masking", status = "nameKor")
     public String nameKor(String name) {
         StringBuilder maskedName = new StringBuilder();
 
