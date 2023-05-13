@@ -76,11 +76,25 @@ public class Masking {
         계좌번호 마스킹
             - 은행별 계좌번호 자릿수 및 패턴 상이함.
             -> 11 ~ 13 자리 사이.
-            -> 2023.05.10: 은행 종류 따지지않고, 앞 4자리, 뒤4자리 마스킹 예정
      */
+    @Timer(value = "bankAccount", status = "Enabled")
     public String bankAccount(String account) {
-        String maskedAccount = "";
-        return maskedAccount;
+        StringBuilder maskedAccount = new StringBuilder();
+        String middleVal = "";
+
+        // business
+        if(account.isEmpty()) {return "Account Value Is Empty";}
+
+        if(account.length() == 13){
+            middleVal = account.substring(3, account.length() - 3);
+
+            maskedAccount.append("***").append(middleVal).append("***");
+        }else {
+            return "해당 자릿수는 아직 제공하지 않습니다.";
+        }
+
+
+        return maskedAccount.toString();
     }
 
     // For Test
@@ -94,6 +108,7 @@ public class Masking {
         // Masking Test
         System.out.println("Maksing Test");
 
+        //----------- Name Kor
         String res = masking.nameKor("김빛나라");
         String res2 = masking.nameKor("김이삭");
 
@@ -105,5 +120,9 @@ public class Masking {
         System.out.println("numberRes = " + numberRes);
         System.out.println("numberRes2 = " + numberRes2);
 
+        //----------- Bank
+
+        String bankRes1 = masking.bankAccount("1234567890123");
+        System.out.println("bankRes1 = " + bankRes1);
     }
 }
