@@ -1,5 +1,6 @@
 package makeUtil.masking;
 
+import config.annotation.TImerRunner;
 import config.annotation.Timer;
 
 import java.util.Map;
@@ -85,6 +86,12 @@ public class Masking {
     // For Test
     public static void main(String[] args) {
         Masking masking = new Masking();
+
+        // Annotation Process
+        TImerRunner runner = new TImerRunner(masking);
+        runner.withAnnotation();
+
+        // Masking Test
         System.out.println("Maksing Test");
 
         String res = masking.nameKor("김빛나라");

@@ -2,7 +2,6 @@ package config.annotation;
 
 import makeUtil.masking.Masking;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /************
@@ -14,6 +13,18 @@ import java.lang.reflect.Method;
  * @Description :
  ************/
 public class TImerRunner {
+
+    private static Object uses;
+
+    public TImerRunner() {}
+
+    public TImerRunner(Masking masking) {
+        uses = masking;
+    }
+
+    public TImerRunner (Object obj) {
+        uses = obj.getClass();
+    }
 
     public static void processAnnotaion(Object o) {
         Class<?> targetClass = o.getClass();
@@ -30,13 +41,16 @@ public class TImerRunner {
         }
     }
 
+    public void withAnnotation() {
+        processAnnotaion(uses);
+    }
+
     public static void main(String[] args) {
         // 특정 클래스만 target 으로 함.
         // TODO : 지정 하는 모든 패키지의 클래스를 검사해야함.
 
         // 특정 Class Target
-        Masking masking = new Masking();
-        processAnnotaion(masking);
+        processAnnotaion(uses);
 //        String res = masking.nameKor("홍길동");
 //        System.out.println("홍길동 = " + res);
     }
