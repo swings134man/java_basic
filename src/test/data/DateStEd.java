@@ -59,7 +59,7 @@ public class DateStEd {
         // 종료 날짜 format
         int getMapMonth = (int) map.get("month") + 1;
         sb.append(rYear).append("-");
-        String res2 = (getMapMonth < 10) ? String.valueOf(sb.append("0").append(String.valueOf(getMapMonth)).append(anotherForm)) : String.valueOf(sb.append(getMapMonth).append(anotherForm));
+        String res2 = (getMapMonth < 10) ? String.valueOf(sb.append("0").append(getMapMonth).append(anotherForm)) : String.valueOf(sb.append(getMapMonth).append(anotherForm));
         endDate = sb.toString();
         map.put("end", endDate);
 
