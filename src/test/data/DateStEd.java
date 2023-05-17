@@ -56,6 +56,8 @@ public class DateStEd {
 
         Map<String, Object> result = new HashMap<>();
 
+        // sb.append(edMonthSt.length() == 1 ? "0" + edMonthSt + dayTime : edMonthSt + dayTime); -> Another code (2023.05.17)
+        
         // 종료 날짜 format
         int getMapMonth = (int) map.get("month") + 1;
         sb.append(rYear).append("-");
