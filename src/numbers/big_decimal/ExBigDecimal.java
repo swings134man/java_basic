@@ -60,8 +60,9 @@ public class ExBigDecimal {
             - equals : 소수점 까지 모든 값이 완전히 동일해야 true -> 소수점 맨 끝의 0 까지 비교함.
             - compareTo : 값 비교 -> 소수점 맨끝 0 무시 값 동일시 0, 적으면 -1, 많으면 1을 반환함.
          */
-        a.equals(b); //false
-        a.compareTo(b); // -1
+        System.out.println("====== 비교연산 ======");
+        System.out.println(a.equals(b)); //false
+        System.out.println(a.compareTo(b)); // -1
 
         /**
          * 사칙연산
@@ -75,9 +76,14 @@ public class ExBigDecimal {
          * 두수중 최소값 : a.min(b);
          * 두수중 최대값 : a.max(b);
          */
+        System.out.println("====== 사칙연산 ======");
+        System.out.println("add :" + a.add(b));
+        System.out.println("subtract :" + a.subtract(b));
+        System.out.println("multiply :" + a.multiply(b));
     }
 
     public static void main(String[] args) {
-        exampleOfDouble();
+//        exampleOfDouble();
+        decimalDef();
     }
 }
