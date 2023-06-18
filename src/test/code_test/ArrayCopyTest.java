@@ -1,5 +1,7 @@
 package test.code_test;
 
+import java.util.Arrays;
+
 /************
  * @info : 배열 복사 테스트
  * @name : ArrayCopyTest
@@ -30,6 +32,16 @@ public class ArrayCopyTest {
         System.out.println("-----참조값 확인-----");
         System.out.println("arr1 참조값 : " + arr1);
         System.out.println("arr2 참조값 : " + arr2);
+        System.out.println("--------------------");
 
+        /*
+            Deep Copy
+         */
+        String[] deep1 = arr1.clone(); // aa, b, c, dd, e
+        System.out.println("deep :" + Arrays.toString(deep1));
+
+        deep1[0] = "a";
+        System.out.println("arr1 : " + Arrays.toString(arr1));
+        System.out.println("deep :" + Arrays.toString(deep1));
     }//main
 }
