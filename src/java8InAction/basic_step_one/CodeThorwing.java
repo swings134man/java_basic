@@ -47,6 +47,7 @@ public class CodeThorwing {
     }
 
     // Predicate란? : 인수로 값을 받아서 true, false를 반환하는 함수형 인터페이스
+    //  -> Java8 에서 Function<ExamData, Boolean> 으로도 구현 가능.
     public interface Predicate<T> {
         boolean test(T t);
     }
