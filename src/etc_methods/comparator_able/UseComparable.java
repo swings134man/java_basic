@@ -35,7 +35,7 @@ public class UseComparable {
 
         Player p = new Player();
         int res = new Player("김씨", 30).compareTo(players.get(0));
-        System.out.println(res);
+        System.out.println("김씨 - 정렬(박씨) = " + res);
     }
 }
 
