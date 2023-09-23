@@ -82,5 +82,18 @@ public class CamelCaseConvert {
         String s1 = ccc.toSnake(camel);
         System.out.println("s = " + s);
         System.out.println("s1 = " + s1);
+
+        // UPPER, LOWER CASE
+        String basicLow = "test_words";
+        String basicHIGH = "TEST_WORDS";
+        System.out.println("low = " + basicLow.toUpperCase());
+        System.out.println("high = " + basicHIGH.toLowerCase());
+
+        // TEST
+        String testColumn = "test_column_bd";
+        System.out.println("testColumn = " + ccc.toCamel(testColumn));
+
+        String testSnake = "testColumnBd";
+        System.out.println("testSnake = " + ccc.toSnake(testSnake));
     }
 }
