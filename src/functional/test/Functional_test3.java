@@ -17,8 +17,6 @@ public class Functional_test3 {
 
     public static void main(String[] args) {
 
-        Functional_test3 ft = new Functional_test3();
-
         List<String> list = Arrays.asList("Hyundai", "Benz", "BMW");
 
         // send
