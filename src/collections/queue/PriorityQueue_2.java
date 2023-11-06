@@ -14,6 +14,10 @@ import java.util.PriorityQueue;
  *
  * - 가격 높은경우가 높다.
  * - 가격이 같을 경우, grade 가 더 높은 경우 우선순위가 더 높다.
+ *
+ * priority Queue 의 첫번째 인자인, initalCapacity 는 우선순위 큐의 크기를 의미한다.
+ * - 초기 크기를 설정할 수 있으며, 설정하지 않으면 기본값으로 11이 설정된다.
+ * - 또한 offer 되는 수의 따라 동적으로 늘어난다. -> 크기 설정을 미리 해놓으면 성능을 높일 수있다. (메모리를 미리 확보)
  ************/
 public class PriorityQueue_2 {
 
