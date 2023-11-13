@@ -30,7 +30,8 @@ public class Test1 {
         // 1. 현재 날짜 구하기
         LocalDate today = LocalDate.now();
         // 저번 주의 월요일을 구합니다.
-        LocalDate lastMonday = today.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)).minusWeeks(1);
+//        LocalDate lastMonday = today.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)).minusWeeks(1);
+        LocalDate lastMonday = today.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)).minusWeeks(1); // 화요일 현재 잘됨?
 //        LocalDate lastMonday = today.with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
         LocalDate lastSunday = lastMonday.plusDays(6);
 
