@@ -1,9 +1,7 @@
 package dateType.local_date;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -30,7 +28,8 @@ public class DateMain {
      */
     public static void main(String[] args) {
 //        instantType();
-        localDateTime();
+//        localDateTime();
+        localDate();
     }
 
     // java.util.Date
@@ -80,6 +79,7 @@ public class DateMain {
         System.out.println("localDateTime = " + localDateTime); // 2023-12-05T22:48:10.002888
     }
 
+    // LocalDateTime
     private static void localDateTime() {
         /**
          * LocalDateTime 은 현재 로컬 시간에 맞춰서 시간을 표현함.
@@ -93,6 +93,38 @@ public class DateMain {
         LocalDateTime ldt = LocalDateTime.now(); //2023-12-05T22:52:31.083586
         System.out.println("ldt = " + ldt);
 
+        String format1 = ldt.format(DateTimeFormatter.ofPattern("yyyyMMdd")); // 20231205 - format 설정시 String 으로 반환
+        System.out.println("format1 = " + format1);
+
+        // String To LocalDateTime
+        // LocalDateTime.parse() 는 ISO 8601 형식을 맞춰줘야 함. -> yyyy-MM-ddTHH:mm:ss
+        String str = "2023-12-05T12:01:01";
+        LocalDateTime parse = LocalDateTime.parse(str);
+        System.out.println("parse = " + parse);
+        System.out.println("parse Type = " + parse.getClass().getTypeName()); // java.time.LocalDateTime
+    }
+
+    // LocalDate
+    public static void localDate() {
+        /**
+         * LocalDate 는 현재 로컬 시간에 맞춰서 날짜를 표현함.
+         *
+         * MySQL : DATE 사용가능
+         * Oracle : DATE 사용가능
+         *
+         */
+
+        // 정의 및 설정
+        LocalDate now = LocalDate.now(); // 2023-12-05
+        System.out.println("now = " + now);
+
+        // String To LocalDate
+        String date = "20231201";
+        LocalDate parse = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyyMMdd")); // 2023-12-01
+        System.out.println("parse = " + parse);
+
+        // 만약 String To LocalDate 로 변환 후 다시 포맷을 걸려면?
+        String yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd").format(parse);// 20231201
     }
 
 }//class
