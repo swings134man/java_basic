@@ -13,12 +13,13 @@ public class Generate_256Key {
         generateEncryptionKey();
     }
 
-    public static void generateEncryptionKey() {
+    public static String generateEncryptionKey() {
         byte[] key = new byte[32];
         new SecureRandom().nextBytes(key);
         String encryptionKey = Base64.getEncoder().encodeToString(key);
 //        String encryptionKey = BaseEncoding.base64().encode(key); // com.google.common.io.BaseEncoding
 
         System.out.println("Generated Base64-encoded AES-256 encryption key: " + encryptionKey);
+        return encryptionKey;
     }
 }
