@@ -40,7 +40,7 @@ public class AES256_Sample {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }printStackTrace
+        }
         return null;
     }
 
