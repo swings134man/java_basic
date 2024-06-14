@@ -21,5 +21,16 @@ public class VarExample2 {
                 .collect(Collectors.toList());
 
         System.out.println("listParam = " + listParam);
+
+        // -----
+        new VarExample2().test();
+    }
+
+    private void test() {
+        // FOR var Test
+        List<String> list = List.of("a", "b", "c");
+        for(var str : list) {
+            System.out.println("str = " + str);
+        }
     }
 }
