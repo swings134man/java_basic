@@ -3,9 +3,14 @@ package about_11_version;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
 /************
  * @info : HttpClientTest
@@ -35,9 +40,21 @@ public class HttpClientTest {
                 .connectTimeout(Duration.ofSeconds(10))
                 .build();
 
+        // Header
+        Map<String, String> headerMap = new HashMap<>();
+        headerMap.put("Content-Type", "application/json");
+        headerMap.put("Accept", "application/json");
+        headerMap.put("Authorization", "Bearer token");
+
+        String[] headersArray = headerMap.entrySet().stream()
+                .flatMap(entry -> Stream.of(entry.getKey(), entry.getValue()))
+                .toArray(String[]::new);
+        System.out.println("headersArray = " + Arrays.toString(headersArray));
+
         // Request 객체
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
+                .headers(headersArray)
                 .uri(URI.create("https://www.google.com"))
                 .build();
 
