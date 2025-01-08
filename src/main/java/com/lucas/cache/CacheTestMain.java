@@ -52,9 +52,10 @@ public class CacheTestMain {
 
         // clear
         cache.clear();
-        System.out.println("contains key3 : " + cache.containsKey("key3")); // false
+        System.out.println("contains key4 : " + cache.containsKey("key4")); // false
 
         System.out.println("------------------------ ShutDown ------------------------");
+
         // Graceful Shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(){
             public void run() {

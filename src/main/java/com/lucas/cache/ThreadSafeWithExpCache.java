@@ -178,6 +178,7 @@ public class ThreadSafeWithExpCache<K, V> {
      */
     public void shutdown() {
         scheduler.shutdown();
+        System.out.println("Cache Scheduler Shutdown!");
     }
 
     /* ---------------- Private operations -------------- */
