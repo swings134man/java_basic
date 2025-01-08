@@ -3,6 +3,7 @@ package com.lucas.cache;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @package : com.lucas.cache
@@ -55,6 +56,7 @@ public class ThreadSafeWithExpCache<K, V> {
      */
     public ThreadSafeWithExpCache() {
         this.scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(this::cleanup, 30* 1000, 30 & 1000, TimeUnit.MILLISECONDS); // 30s cycle cleanup
     }
 
     /* ---------------- Public operations -------------- */
