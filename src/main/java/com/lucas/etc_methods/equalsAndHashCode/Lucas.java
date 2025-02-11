@@ -10,6 +10,7 @@ import java.util.Objects;
  * @author : SeokJun Kang(swings134@gmail.com)
  * @version : 1.0.0
  * @Description : Field + Getter/Setter Only
+ * - Lombok 을 사용한다면 @EqualsAndHashCode 를 사용하면 된다.
  ************/
 public class Lucas {
 
@@ -72,8 +73,9 @@ public class Lucas {
     // equals() - Refactoring
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) {return true;}
-        if(!(obj instanceof Lucas)){return false;}
+        if(this == obj) return true;
+
+        if(!(obj instanceof Lucas)) return false;
 
         Lucas that = (Lucas)obj;
         return age == that.age &&

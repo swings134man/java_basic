@@ -9,6 +9,8 @@ package com.lucas.etc_methods.equalsAndHashCode;
  * @version : 1.0.0
  * @Description :
  *
+ * - Java 의 모든 Class 는 Object Class 를 상속받는다. Object Class 는 대표적으로 toString(), equals(), hashCode() 메소드를 가지고 있다.
+ *
  * - equals()를 Override 하면, hashCode() 또한 Override 해야한다.
  *      1. HashSet 과 같은 Hash 를 사용시 문제가 발생한다. -> 객체는 equals(같다) 지만, 주소값이 다르기 때문에, Set 에서 중복 add가 되기 때문.
  *      2. 이유: equals를 Overriding 하는 이유는 두 객체의 동일성 보장을위한 것인데, hashCode가 다르다면? 두 객체가 완전히 동일하다고 볼 수없기 떄문이다.
@@ -30,8 +32,12 @@ package com.lucas.etc_methods.equalsAndHashCode;
  *  - hashCode()
  *      1. Object Class : native 키워드를 갖고 있음, native 키워드는 OS 가 갖고있는 메소드를 뜻하며, C나 저수준 언어로 작성된 native 코드를 JVM에 적재한다.
  *      2. 적재하는 역할을 JNI 가 하게 된다. (Java Native Interface) -> 저수준언어를 JVM에 적재 및 실행을 담당함.
- *      3.
  *
+ *  - 실제 사용하는 예시!!!!!!
+ *      1. Spring, Spring boot 와 같은 Web 개발시에는, JPA Entity, DTO Class 에서 사용함.
+ *          1-1. Entity: @EqualsAndHashCode(of = "id") 를 사용하여, id 값만 비교하도록 설정할 수 있다.
+ *          1-2. DTO : @EqualsAndHashCode 를 사용하여, 모든 필드를 비교하도록 설정할 수 있다.
+ *      즉, Entity 는 ID 값만을 비교하고, ID 값이 없는 DTO 의 경우 모든 필드를 비교하도록 설정할 수 있다.
  ************/
 public class EqualsAndHash_main {
 
@@ -60,9 +66,8 @@ public class EqualsAndHash_main {
         System.out.println("Lucas Class is Equals = " + lu.equals(lu2)); // if Override is available = true
         System.out.println("Lucas Hash = " + lu.hashCode() + "  lu2: " + lu2.hashCode()); // equals() override시, HashCode 또한 override 해야함. -> hashCode 재정의 안할시, HashSet 과 같이 Hash 사용시 문제발생.
         System.out.println("Lucas Obj is same?  " +  (lu.hashCode() == lu2.hashCode()));
-        System.out.println();
 
-
+        System.out.println("------------------------- False Sample Class Equals  -------------------------");
 
 
         // 2 - false 예제
@@ -75,17 +80,34 @@ public class EqualsAndHash_main {
         d2.setName("david");
 
         System.out.println("David Class is Equals = " + d1.equals(d2));
-        System.out.println("David Class Hashs : " + d1.hashCode() + "  d2 :" + d2.hashCode());
+        System.out.println("David Class Hashes : " + d1.hashCode() + "  d2 :" + d2.hashCode());
 
 
 
 
-        System.out.println();
+        System.out.println("------------------------- String Class Equals  -------------------------");
         // -------------------------- String Class Equals --------------------------
+        // String Class 의 경우 내부적으로 문자열을 char[] 배열로 하나씩 모두 비교하며 모두 같을시 true 를 반환함.
         String s1 = new String("string1");
         String s2 = new String("string2");
         System.out.println("String equals : " + s1.equals(s2));
+
+        System.out.println("------------------------- Lombok Class Equals  -------------------------");
+        LombokObj lo1 = new LombokObj();
+        lo1.setAge(10);
+        lo1.setName("lombok");
+
+        LombokObj lo2 = new LombokObj();
+        lo2.setAge(10);
+        lo2.setName("lombok");
+
+        LombokObj lo3 = new LombokObj();
+        lo3.setAge(11);
+        lo3.setName("lombok");
+
+        System.out.println("Lombok Class is Equals = " + lo1.equals(lo2));
+        System.out.println("Lombok Class Hashes : " + lo1.hashCode() + "  lo2 :" + lo2.hashCode());
+        System.out.println("Lombok Class is Equals with diff Value = " + lo1.equals(lo3));
+        System.out.println("Lombok Class Hashes with diff Value: " + lo1.hashCode() + "  lo3 :" + lo3.hashCode());
     }
-
-
 }//class
